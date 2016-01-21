@@ -1,0 +1,37 @@
+<%= form_tag events_path, :method => :get do %>
+<%= label :location, "Search Events near : " %>
+<%= text_field_tag :location, params[:location] %>
+
+<%= label :distance, "Radius : " %>
+<%= text_field_tag :distance, (params[:distance] || 20) %>
+<br>
+<br>
+<%= label :start_time, "Start Date : " %>
+<%= text_field_tag 'start_time', "", :id => 'datepicker_start', :readonly => 'readonly' %>
+<%= label :end_time, "End Date : " %>
+<%= text_field_tag 'end_time', "", :id => 'datepicker_end', :readonly => 'readonly' %>
+<br>
+<br>
+<%= label :keywords, "Keywords : " %>
+<%= text_field_tag :keywords, params[:keywords] %>
+
+<%= submit_tag "SEARCH" %>
+<% end %>
+
+
+
+<script type="text/javascript">
+//sqlite does not have date formatting, needs yyyy-mm-dd
+$(document).ready(function() {
+    $('#datepicker_start').datepicker({
+    minDate: "", maxDate: "", dateFormat: "dd/mm/yy",
+    change: function() {
+      var isoDate = this.getValue('yyyy-mm-dd');
+      $(this).attr('data-value', isoDate);
+    }
+    });
+    $('#datepicker_end').datepicker({
+    minDate: +1, maxDate: "", dateFormat: "dd/mm/yy"
+    });
+  });
+</script>

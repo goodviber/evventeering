@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>This is the index (results page).</h2>
+  <p>
+    Events : <span id="count"><%= @events.count %></span>
+  </p>
+  <%= link_to "Event Search", new_event_path, remote: true, class: "btn btn-primary" %>
+  <br><br>
+
+  <div id="event-index">
+    <%= render "index" %>
+  </div>
+  <div id="search-modal" class="modal fade"></div>
+
+</div>

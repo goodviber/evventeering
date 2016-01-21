@@ -1,0 +1,8 @@
+<% @events.each do |event| %>
+<div class ="well">
+  <%= event.title %> - <%= event.venue_town %>&nbsp;<%= event.venue_postcode %>
+  <br> Start : <%= event.start_time %>
+  <br> End : <%= event.end_time %>
+  <br> Keywords : <%= event.keywords %>
+</div>
+<% end %>
