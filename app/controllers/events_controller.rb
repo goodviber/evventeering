@@ -25,6 +25,8 @@ class EventsController < ApplicationController
       @events = @events.where('end_time <= ?', e_time)
     end
 
+    @events = @events.paginate(:page => params[:page], :per_page => 5)
+
     respond_to do |format|
       format.html
       format.js { render action: 'create'}

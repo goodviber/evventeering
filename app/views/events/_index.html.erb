@@ -1,3 +1,5 @@
+<%= will_paginate @events %>
+
 <% @events.each do |event| %>
 <div class ="well">
   <%= event.title %> - <%= event.venue_town %>&nbsp;<%= event.venue_postcode %>
